@@ -100,3 +100,47 @@ select: выпадающий список
 label: создает метку, которая отображается рядом с полем ввода
 
 textarea: многострочное текстовое поле
+
+### Атрибуты name и value
+У всех элементов ввода можно установить атрибуты name и value. Эти атрибуты имеют важное значение. По атрибуту name мы можем идентифицировать поле ввода, а атрибут value позволяет установить значение поля ввода
+```
+<form method="get" action="index.html">
+            <input type="text" name="login" value="Tom"/>
+            <input type="password" name="password"/>
+            <input type="submit" value="Войти" />
+        </form>
+```
+### Кнопки
+Кнопки представлены элементом button.   Так, в зависимости от значения атрибута type мы можем создать различные типы кнопок:
+submit: кнопка, используемая для отправки формы
+reset: кнопка сброса значений формы
+```
+<form>
+            <p><input type="text" name="login"/></p>
+            <p><input type="password" name="password"/></p>
+            <p>
+                <button type="submit" formmethod="get" formaction="index.html">Отправить</button> 
+                <button type="reset">Отмена</button>
+            </p>
+        </form>
+```
+Кроме элемента button для создания кнопок можно использовать элемент input, у которого атрибут равен submit или reset. Например:
+```
+<form>
+            <p><input type="text" name="login"/></p>
+            <p><input type="password" name="password"/></p>
+            <p>
+                <input type="submit" value="Отправить" /> 
+                <input type="reset" value="Отмена" />
+            </p>
+        </form>
+```
+И еще один элемент input с атрибутом type="image" позволяет использовать в качестве кнопки изображение:
+```
+<form>
+            <p>
+                <input type="text" name="search" />
+                <input type="image" src="search.png" name="submit" />
+            </p>
+        </form>
+```
