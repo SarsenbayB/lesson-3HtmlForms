@@ -266,3 +266,358 @@ value: значение по умолчанию
         </form>
 ```
 
+Как и в случае с текстовым полем мы можем здесь прикрепить список datalist с диапазоном возможных значений:
+```
+<form>
+            <p>
+                <label for="price">Цена: </label>
+                <input type="number" list="priceList"
+                    step="1000" min="3000" max="100000" value="10000" id="price" name="price"/>
+            </p>
+            <p>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+        <datalist id="priceList">
+            <option value="15000" />
+            <option value="20000" />
+            <option value="25000" />
+        </datalist>
+```
+### Ползунок
+Ползунок представляет шкалу, на которой мы можем выбрать одно из значений. Для создания ползунка применяется элемент input с атрибутом type="range". Во многом ползунок похож на простое поле для ввода чисел. Он также имеет атрибуты min, max, step и value:
+```
+ <form>
+            <p>
+                <label for="price">Цена:</label> 
+                1<input type="range" step="1" min="0" max="100" value="10" id="price" name="price"/>100
+            </p>
+            <p>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+```
+### Флажки и переключатели
+Флажок представляет элемент, который может находиться в двух состояниях: отмеченном и неотмеченном. Флажок создается с помощью элемента input с атрибутом type="checkbox":
+```
+<form>
+            <p>
+                <input type="checkbox" checked name="html5"/>HTML5
+            </p>
+            <p>
+                <input type="checkbox" name="dotnet"/>.NET
+            </p>
+            <p>
+                <input type="checkbox" name="java"/>Java
+            </p>
+            <p>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+```
+### Переключатели
+Переключатели или радиокнопки похожи на флажки, они также могут находиться в отмеченном или неотмеченном состоянии. Только для переключателей можно создать одну группу, в которой одновременно можно выбрать только один переключатель. Например:
+```
+<form>
+            <h2>Укажите пол</h2>
+            <p>
+                <input type="radio" value="man" checked name="gender"/>мужской
+            </p>
+            <p>
+                <input type="radio" value="woman" name="gender"/>женский
+            </p>
+            <h2>Выберите технологию</h2>
+            <p>
+                <input type="radio" value="html5" checked name="tech"/>HTML5
+            </p>
+            <p>
+                <input type="radio" value="net" name="tech"/>.NET
+            </p>
+            <p>
+                <input type="radio" value="java" name="tech"/>Java
+            </p>
+            <p>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+```
+### Элементы для ввода цвета, url, email, телефона
+За установку цвета в HTML5 отвечает специальный элемент input с типом color:
+```
+<label for="favcolor">Выберите цвет</label>
+<input type="color" id="favcolor" name="favcolor" />
+```
+С помощью элемента datalist мы можем задать набор цветов, из который пользователь может выбрать нужный:
+```
+<label for="favcolor">Выберите цвет</label>
+<input type="color" list="colors" id="favcolor" name="favcolor" />
+<datalist id="colors">
+    <option value="#0000FF" label="blue">
+    <option value="#008000" label="green">
+    <option value="#ff0000" label="red">
+</datalist>
+```
+url, адреса электронной почты и телефонного номера. Они однотипны и во многом отличаются только тем, что для атрибута type принимают соответственно значения email, tel и url.
+```
+<form>
+            <p>
+                <label for="email">Email: </label>
+                <input type="email" placeholder="user@gmail.com" id="email" name="email"/>
+            </p>
+            <p>
+                <label for="url">URL: </label>
+                <input type="url" id="url" name="url"/>
+            </p>
+            <p>
+                <label for="phone">Телефон: </label>
+                <input type="tel" placeholder="(XXX)-XXX-XXXX" id="phone" name="phone"/>
+            </p>
+            <p>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+```
+### Элементы для ввода даты и времени
+
+```
+ <form>
+            <p>
+                <label for="firstname">Имя: </label>
+                <input type="text" id="firstname" name="firstname"/>
+            </p>
+            <p>
+                <label for="date">Дата рождения: </label>
+                <input type="date" id="date" name="date"/>
+            </p>
+            <p>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+```
+Применение остальных элементов:
+```
+<form>
+            <p>
+                <label for="week">Неделя: </label>
+                <input type="week" name="week" id="week" />
+            </p>
+            <p>
+                <label for="localdate">Дата и время: </label>
+                <input type="datetime-local" id="localdate" name="date"/>
+            </p>
+            <p>
+                <label for="month">Месяц: </label>
+                <input type="month" id="month" name="month"/>
+            </p>
+            <p>
+                <label for="time">Время: </label>
+                <input type="time" id="time" name="time"/>
+            </p>
+            <p>
+                <button type="submit">Отправить</button>
+            </p>
+        </form>
+```
+### Отправка файлов
+```
+<form enctype="multipart/form-data" method="post" action="http://localhost:8080/postfile.php">
+            <p>
+                <input type="file" name="file" />
+            </p>
+            <p>
+                <input type="submit" value="Отправить" />
+            </p>
+        </form>
+```
+При нажатии на кнопку "Выберите файл" открывается диалоговое окно для выбора файла. А после выбора рядом с кнопкой отображается имя выбранного файла.
+
+Важно отметить, что для отправки файла на сервер форма должна иметь атрибут enctype="multipart/form-data".
+
+С помощью ряда атрибутов мы можем дополнительно настроить элементы выбора файла:
+
+accept: устанавливает тип файл, которые допустимы для выбора
+
+multiple: позволяет выбирать множество файлов
+
+required: требует обязательной установки файла
+
+Например, множественный выбор файлов:
+```
+<form enctype="multipart/form-data" method="post" action="http://localhost:8080/postfile.php">
+    <p>
+        <input type="file" name="file" multiple />
+    </p>
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>
+```
+### Список select
+Элемент select создает список. В зависимости от настроек это может быть выпадающий список для выбора одного элемента, либо раскрытый список, в котором можно выбрать сразу несколько элементов.
+```
+<form method="get">
+            <p>
+                <label for="phone">Выберите модель:</label>
+                <select id="phone" name="phone">
+                    <option value="iphone 6s">iPhone 6S</option>
+                    <option value="lumia 950">Lumia 950</option>
+                    <option value="nexus 5x">Nexus 5X</option>
+                    <option value="galaxy s7">Galaxy S7</option>
+                </select>
+            </p>
+            <p>
+                <input type="submit" value="Отправить" />
+            </p>
+        </form>
+```
+Для создания списка с множественным выбором к элементу select надо добавить атрибут multiple:
+```
+<form method="get">
+            <p>
+                <label for="phone">Выберите модель:</label> <br/>
+             
+                <select multiple id="phone" name="phone">
+                    <option value="iphone 6s">iPhone 6S</option>
+                    <option value="lumia 950">Lumia 950</option>
+                    <option value="nexus 5x">Nexus 5X</option>
+                    <option value="galaxy s7">Galaxy S7</option>
+                </select>
+            </p>
+            <p>
+                <input type="submit" value="Отправить" />
+            </p>
+        </form>
+```
+Select также позволяет группировать элементы с помощью тега <optgroup>:
+```
+ <form method="get">
+            <p>
+                <label for="phone">Выберите модель:</label>
+             
+                <select id="phone" name="phone">
+                    <optgroup label="Apple">
+                        <option value="iphone 6s">iPhone 6S</option>
+                        <option value="iphone 6s plus">iPhone 6S Plus</option>
+                        <option value="iphone 5se">iPhone 5SE</option>
+                    </optgroup>
+                    <optgroup label="Microsoft">
+                        <option value="lumia 950">Lumia 950</option>
+                        <option value="lumia 950 xl">Lumia 950 XL</option>
+                        <option value="lumia 650">Lumia 650</option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>
+                <input type="submit" value="Отправить" />
+            </p>
+        </form>
+``` 
+ ### Textarea
+ Элемент <input type="text" /> позволяет создавать простое однострочное текстовое поле. Однако возможностей этого элемента по вводу текста бывает недостаточно, и в этой ситуации мы можем использовать многострочное текстовое поле, представленное элементом textarea:
+ ```
+ <form method="get">
+            <p>
+                <label for="comment">Ваш комментарий:</label><br/>
+                <textarea name="comment" id="comment" placeholder="Не более 200 символов" maxlength="200"></textarea>   
+            </p>
+            <p>
+                <input type="submit" value="Добавить" />
+            </p>
+        </form>
+ ```
+ С помощью дополнительных атрибутов cols и rows можно задать соответственно количество столбцов и строк:
+ ```
+ <form method="get">
+            <p>
+                <label for="comment">Ваш комментарий:</label><br/>
+                <textarea id="comment" name="comment" placeholder="Написать комментарий"
+                    cols="30" rows="7"></textarea> 
+            </p>
+            <p>
+                <input type="submit" value="Добавить" />
+            </p>
+        </form>
+ ```
+ ### Валидация форм
+ Для создания валидации у элементов форм HTML5 используется ряд атрибутов:
+
+required: требует обязательного ввода значения. Для элементов textarea, select, input (с типом text, password, checkbox, radio, file, datetime-local, date, month, time, week, number, email, url, search, tel)
+
+min и max: минимально и максимально допустимые значения. Для элемента input с типом datetime-local, date, month, time, week, number, range
+
+pattern: задает шаблон, которому должны соответствовать вводимые данные. Для элемента input с типом text, password, email, url, search, tel
+
+Атрибут required
+Атрибут required требует обязательного наличия значения:
+ ```
+ <form method="get">
+            <p>
+                <label for="login">Логин:</label>
+                <input type="text" required id="login" name="login" />
+            </p>
+            <p>
+                <label for="password">Пароль:</label>
+                <input type="password" required id="password" name="password" />
+            </p>
+            <p>
+                <input type="submit" value="Отправить" />
+            </p>
+        </form>
+ ```
+ Атрибуты max и min
+Для ограничения диапазона вводимых значений применяются атрибуты max и min:
+ ```
+  <form method="get">
+            <p>
+                <label for="age">Возраст:</label>
+                <input type="number" min="1" max="100" value="18" id="age" name="age"/>
+            </p>
+            <p>
+                <input type="submit" value="Отправить" />
+            </p>
+        </form>
+ ```
+ Атрибут pattern
+Атрибут pattern задает шаблон, которому должны соответствовать данные. Для определения шаблона используется язык так называемых регулярных выражений. Рассмотрим самые простейшие примеры:
+ ```
+  <form method="get">
+            <p>
+                <label for="phone">Телефон:</label>
+                <input type="text" placeholder="+1-234-567-8901"
+                        pattern="\+\d-\d{3}-\d{3}-\d{4}" id="phone" name="phone" />
+            </p>
+            <p>
+                <input type="submit" value="Отправить" />
+            </p>
+        </form>
+ ```
+ Отключение валидации
+Не всегда валидация является желаемой, иногда требуется ее отключить. И в этом случае мы можем использовать либо у элемента формы атрибут novalidate, либо у кнопки отправки атрибут formnovalidate:
+ ```
+ <form novalidate method="get">
+            <p>
+                <label for="phone">Телефон:</label>
+                <input type="text" placeholder="+1-234-567-8901"
+                        pattern="\+\d-\d{3}-\d{3}-\d{4}" id="phone" name="phone" />
+            </p>
+            <p>
+                <input type="submit" value="Отправить" formnovalidate />
+            </p>
+        </form>
+ ```
+ ### Элементы fieldset и legend
+ Для группировки элементов формы нередко применяется элемент fieldset. Он создает границу вокруг вложенных элементов, как бы создавая из них группу. Вместе с ним используется элемент legend, который устанавливает заголовок для группы элементов:
+ ```
+ <h2>Вход на сайт</h2>
+        <form>
+            <fieldset>
+                <legend>Введите данные:</legend>
+                <label for="login">Логин:</label><br>
+                <input type="text" name="login" id="login" /><br>
+                <label for="password">Пароль:</label><br>
+                <input type="password" name="password" id="password" /><br>
+                <input type="submit" value="Авторизация">
+            </fieldset>
+        </form> 
+ ```
+ При необходимости мы можем создать на одной форме несколько групп с помощью элементов fieldset.
